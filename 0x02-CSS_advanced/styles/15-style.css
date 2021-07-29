@@ -25,7 +25,7 @@
     --section-title-color: var(--color-black);
 }
 * {
-    box-sizing: border-box;
+    box-sizing: content-box;
 }
 html {
     scroll-behavior: smooth;
