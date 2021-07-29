@@ -20,16 +20,13 @@ html {
     font-size: 62.5%;
 }
 h1, h2, h3, h4, h5, h6 {
-    font-weight: var(font-weight-bold);
+    font-weight: var(--font-weight-bold);
     font-family: var(--font-family-title);
 }
 body, a {
     font-family: var(--font-family-base);
     font-size: var(--font-size-medium);
     color: var(--text-color);
-}
-body {
-    font-weight: var(font-weight-regular);
 }
 .visually-hidden {
     display: none;
