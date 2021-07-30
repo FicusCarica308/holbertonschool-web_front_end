@@ -175,7 +175,7 @@ ul.row {
 .social-link > svg {
     fill: var(--text-color);
 }
-.card-title .card-services {
+.card-services .card-title {
     margin: 0;
 }
 .card-services a {
