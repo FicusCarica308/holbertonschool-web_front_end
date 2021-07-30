@@ -63,6 +63,9 @@ a:active {
 .visually-hidden {
     display: none;
 }
+.section {
+    padding: var(--section-padding);
+}
 .section-header {
     text-align: var(--section-header-align);
 }
