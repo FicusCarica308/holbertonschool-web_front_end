@@ -70,6 +70,9 @@ a:active {
     text-align: var(--section-header-align);
     padding: var(--section-header-padding);
 }
+.section-body {
+    padding: var(--section-body-padding);
+}
 .section-title {
     font-family: var(--font-family-title);
     font-size: var(--font-size-xx-large);
