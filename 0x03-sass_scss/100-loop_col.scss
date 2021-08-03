@@ -1,5 +1,5 @@
 /* a Sass file that creates classes with different widths */
-@for $i from 1 to 4 {
+@for $i from 1 to 5 {
     .col-#{$i} {
         @if $i == 1 {
             width: 100%;
