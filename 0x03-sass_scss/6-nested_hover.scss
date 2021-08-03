@@ -1,8 +1,7 @@
 /* Sets hover color of a button tag */
 button {
     color: #FF0000;
-}
-
-button:hover {
-    color: #00FF00;
+    :hover {
+        color: #00FF00;
+    }
 }
