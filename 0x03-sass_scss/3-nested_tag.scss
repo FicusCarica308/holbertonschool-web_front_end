@@ -1,0 +1,8 @@
+/* Assigne margin and padding values using nested declarations */
+body {
+    padding: 0px;
+    margin: 0px;
+    p {
+        margin: 10px;
+    }
+}
