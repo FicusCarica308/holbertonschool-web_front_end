@@ -1,0 +1,8 @@
+/* Uses @media to scale tags to certain screen widths */
+h1 {
+    font-size: 20px;
+
+    @media screen and (max-width: 320px) {
+        font-size: 14px;
+    }
+}
