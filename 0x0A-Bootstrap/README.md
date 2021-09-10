@@ -1,6 +1,6 @@
 # 0x0A. Bootstrap
-erton-logo-simple.png&f=1&nofb=1)
-oblemsandgotchas.com%2Fwp-content%2Fuploads%2F2018%2F06%2Fbootstrap-stack-e1530246058846.png)
+![alt text](https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fwww.holbertonschool.com%2Fholberton-logo-simple.png&f=1&nofb=1)
+![alt text](https://duckduckgo.com/?t=ffab&q=bootstrap&iax=images&ia=images&iai=http%3A%2F%2Fobscureproblemsandgotchas.com%2Fwp-content%2Fuploads%2F2018%2F06%2Fbootstrap-stack-e1530246058846.png)
 
 # Intro:
 * This directory contains tasks intended to help me bootstrap a free and open-source CSS framework for mobile first development
