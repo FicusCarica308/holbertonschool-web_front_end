@@ -21,6 +21,9 @@
 * 3-index.html - Boostrap code to recreate a given design using card elements provided by the framework
 * 4-index.html - Boostrap code to recreate a given design using various Nav and nav tab elements/techniques provided
 * 5-index.html - Boostrap code to recreate a given design that hides an element at a given breakpoint
+* 6-index.html & 6-styles.css - Task challenge: edit html and boostrap styline without
+touching the html code and boostrap classes within. By the end I have a model the resembles
+the given design only using css to edit boostrap classes.
 
 ## Authors
 Manuel Enrique Figueroa - [Github](https://github.com/FicusCarica308)
