@@ -1,5 +1,5 @@
 /*
-*
+* welcomeMessage - function that returns another function outlining javascripts closure system
 */
 function welcomeMessage(fullName) {
     return function () {
