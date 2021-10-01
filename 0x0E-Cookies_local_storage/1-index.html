@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <title>Basic Cookie</title>
+    </head>
+    <body>
+        <main>
+            <div></div>
+            <h1>Login to the website</h1>
+                    <input type="text" id="firstname" placeholder="Firstname">
+                    <input type="email" id="email" placeholder="Email">
+                    <button onclick="setCookies()">Log me in</button>
+            <h1>Cookies</h1>
+            <button onclick="showCookies()">Show the cookies</button>
+            </div>
+        </main>
+    </body>
+    <script>
+        function setCookies() {
+            const nameCookie = "firstname=" + document.getElementById("firstname").value + ";";
+            const emailCookie = "email=" + document.getElementById("email").value + ";";
+            let curDate = new Date();
+            curDate.setDate(curDate.getDate() + 10)
+            const expireDate = "expires=" + curDate.toUTCString();
+            document.cookie = nameCookie + expireDate + ";path=/";
+            document.cookie = emailCookie + expireDate + ";path=/"
+        }
+
+        function showCookies() {
+            const p_tag = document.createElement("p");
+            p_tag.innerHTML = "Cookies: " + document.cookie;
+            document.body.append(p_tag);
+        }
+    </script>
+</html>
