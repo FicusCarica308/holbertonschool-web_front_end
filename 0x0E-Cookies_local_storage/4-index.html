@@ -3,6 +3,7 @@
     <head>
         <meta charset="utf-8">
         <title>Basic Cookie</title>
+        <script src="https://cdn.jsdelivr.net/npm/js-cookie@3.0.1/dist/js.cookie.min.js"></script>
     </head>
     <body>
         <main>
@@ -10,41 +11,28 @@
                 <h2>Login to the website</h2>
                 <input type="text" id="firstname" placeholder="Firstname">
                 <input type="email" id="email" placeholder="Email">
-                <button onclick="setCookies()">Log me in</button>
+                <button onclick="setCookiesAndShowWelcomeMessage()">Log me in</button>
             </div>
         </main>
     </body>
     <script>
         showWelcomeMessageOrForm();
 
-        function setCookies() {
-            const nameCookie = "firstname=" + document.getElementById("firstname").value + ";";
-            const emailCookie = "email=" + document.getElementById("email").value + ";";
-            let curDate = new Date();
-            curDate.setDate(curDate.getDate() + 10)
-            const expireDate = "expires=" + curDate.toUTCString();
-            document.cookie = nameCookie + expireDate + ";path=/";
-            document.cookie = emailCookie + expireDate + ";path=/"
+        function setCookiesAndShowWelcomeMessage() {
+            const nameVal = document.getElementById("firstname").value;
+            const emailVal = document.getElementById("email").value;
+
+            Cookies.set('firstname', nameVal, { expires: 10, path: '/' })
+            Cookies.set('email', emailVal, { expires: 10, path: '/' })
             showWelcomeMessageOrForm();
         }
 
         function showCookies() {
             const p_tag = document.createElement("p");
-            let getEmail = getCookie("email").split("=")[1];
-            let getFirst = getCookie("firstname").split("=")[1];
+            let getEmail = Cookies.get("email")
+            let getFirst = Cookies.get("firstname")
             p_tag.innerHTML = "Email: " + getEmail + " - " + "Firstname: " + getFirst;
             document.body.append(p_tag);
-        }
-
-        function getCookie(name) {
-            const cookies = decodeURIComponent(document.cookie).split(';');
-            for (let i = 0; i < cookies.length; i++) {
-                let valuePair = cookies[i].split('=');
-                if (valuePair[0].trim() == name) {
-                    return (cookies[i]);
-                }
-            }
-            return ("");
         }
 
         function hideForm() {
@@ -57,17 +45,17 @@
         }
 
         function deleteCookiesAndShowForm() {
-            document.cookie = "firstname=; expires=Thu, 01 Jan 1970 00:00:00 GMT; path=/;"
-            document.cookie = "email=; expires=Thu, 01 Jan 1970 00:00:00 GMT; path=/;"
+            Cookies.remove('firstname', '/');
+            Cookies.remove('email', '/');
             showWelcomeMessageOrForm();
         }
 
         function showWelcomeMessageOrForm() {
-            if (getCookie("firstname") == "" && getCookie("email") == "") {
+            if (!Cookies.get("firstname") && !Cookies.get("email")){
                 showForm();
             } else {
                 hideForm();
-                let getFirst = getCookie("firstname").split("=")[1];
+                let getFirst = Cookies.get("firstname")
                 const welcome = document.createElement("h1");
                 welcome.setAttribute("id", "welcome-h1");
                 welcome.innerHTML = "Welcome: " + getFirst;
