@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+    <meta charset="utf-8" />
+    <title>Task 6</title>
+    <script type="application/javascript" src="https://code.jquery.com/jquery-3.6.0.slim.min.js"
+        integrity="sha256-u7e5khyithlIdTpu22PHhENmPcRdFiHRjhAuHcs05RI=" crossorigin="anonymous">
+        </script>
+</head>
+
+<body>
+
+</body>
+
+<script>
+    function createForm() {
+        $("table").before(
+            $("<input></input>")
+                .attr("type", "text"),
+            $("<input></input>")
+                .attr("type", "text"),
+            $("<select></select>").append(
+                $("<option>Before</option>")
+                    .attr("value", "before"),
+                $("<option>After</option>")
+                    .attr("value", "after")
+            ),
+            $("<input></input>")
+                .attr({"type": "submit", "value": "Submit"})
+                .click(() => {
+                    addNewMember($("input").first().val(),
+                        $("input:nth-of-type(2)").val(),
+                        $("select").val(),
+                    )
+                })
+        );
+    }
+    function addNewMember(firstName, lastName, position) {
+        const newRow = $("<tr></tr>").append(
+            $("<td></td>").text(firstName),
+            $("<td></td>").text(lastName),
+            $("<td></td>").text("(x)")
+                .attr("id", "remove-" + firstName)
+                .css("background-color", "orange")
+                .click(() => {
+                    $("#remove-" + firstName).closest('tr').remove();
+                })
+        );
+        if (position == "before") {
+            $("tbody").prepend(
+                newRow
+            );
+        } else {
+            $("tbody").append(
+                newRow
+            );
+        }
+
+        $(document).on("click", "remove-member", () => {
+            $(this).closest('tr').remove();
+        });
+    }
+    function createFamilyTree() {
+        $("body").append(
+            $("<table></table>").append(
+                $("<thead></thead>").append(
+                    $("<tr></tr>").append(
+                        $("<th></th>").text("Firstname"),
+                        $("<th></th>").text("Lastname")
+                    )
+                ),
+                $("<tbody></tbody>").append()
+            )
+        )
+    }
+    createFamilyTree();
+    createForm()
+</script>
+
+</html>
