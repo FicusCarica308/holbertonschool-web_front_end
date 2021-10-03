@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+    <meta charset="utf-8">
+    <title>Task 10</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+</head>
+
+<body></body>
+
+<script>
+    function addPostRow(data) {
+        $("<p>")
+            .html(`<span>Post created with id ${data.id}, title: ${data.title}, author: ${data.author}</span>`)
+            .appendTo("body")
+    }
+
+    function listPosts() {
+        const url = "http://localhost:3000/posts"
+        /*moved success and error to .done and .fail becuase I found out they are depracated*/
+        $.ajax({
+            method: "GET",
+            url: url,
+            timeout: 0500 /*needs to display error properly*/
+        })
+            .done(function(data) {
+                for (item in data) {
+                    addPostRow(data[item]);
+                }
+            })
+            .fail(()=> { alert("Server Error"); })
+    }
+    listPosts();
+</script>
+
+</html>
