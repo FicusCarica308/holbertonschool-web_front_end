@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+    <meta charset="utf-8">
+    <title>Task 11</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+</head>
+
+<body></body>
+
+<script>
+
+    function sendForm() {
+        const form = $("form").first()
+        form.after("<p>About to send the query to the API</p>")
+
+        const data = { author: $("#author").val(), title: $("#title").val()}
+        const url = "http://localhost:3000/posts"
+        
+        $.ajax ({
+            method: "POST",
+            url: url,
+            data: data,
+            timeout: 0500
+        })
+        .fail(() => { alert("Error sending the POST query"); window.location.reload();})
+    }
+
+    function buildForm() {
+        $("body").append(
+            $("<form></form>").append(
+                $('<div><label for="author">Author</label><input type="text" id="author"><div>'),
+                $('<div><label for="title">Title</label><textarea id="title"></textarea></div>'),
+                $('<input type="submit" value="Submit">')
+                    .click(() => { sendForm(); return false;})
+            )
+        );
+    }
+
+    function addPostRow(data) {
+        $("<p>")
+            .html(`<span>Post created with id ${data.id}, title: ${data.title}, author: ${data.author}</span>`)
+            .appendTo("body")
+    }
+
+    function listPosts() {
+        const url = "http://localhost:3000/posts"
+        /*moved success and error to .done and .fail becuase I found out they are depracated*/
+        $.ajax({
+            method: "GET",
+            url: url,
+            timeout: 0500 /*needs to display error properly*/
+        })
+            .done(function(data) {
+                for (let item = data.length - 1; item >= 0; item--) {
+                    addPostRow(data[item]);
+                }
+            })
+            .fail(()=> { alert("Server Error"); window.location.reload();})
+    }
+    listPosts();
+    buildForm();
+</script>
+
+</html>
